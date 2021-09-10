@@ -1,5 +1,5 @@
 namespace :test do
-  task test1: :environment do
+  task cloudinary: :environment do
     binding.pry
   end
 end
