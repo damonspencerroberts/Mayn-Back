@@ -15,7 +15,5 @@ test:
   database: bk-mayn_test
 
 production:
-  <<: *default
-  database: bk-mayn_production
-  username: bk-mayn
-  password: <%= ENV['BK_MAYN_DATABASE_PASSWORD'] %>
+  url: <%= ENV['PROD_DB_CREDENTIALS'] %>
+  pool: 120
