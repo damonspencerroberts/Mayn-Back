@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_103203) do
+ActiveRecord::Schema.define(version: 2021_09_10_131735) do
+
+  create_table "classifieds", force: :cascade do |t|
+    t.string "description", default: ""
+    t.integer "user_id", null: false
+    t.integer "upvotes", default: 0
+    t.string "topic", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_classifieds_on_user_id"
+  end
+
+  create_table "event_users", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_users_on_event_id"
+    t.index ["user_id"], name: "index_event_users_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title", default: ""
+    t.string "description", default: ""
+    t.integer "user_id", null: false
+    t.integer "upvotes", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
@@ -31,8 +60,15 @@ ActiveRecord::Schema.define(version: 2021_09_10_103203) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username", default: ""
+    t.string "description", default: ""
+    t.string "age", default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "classifieds", "users"
+  add_foreign_key "event_users", "events"
+  add_foreign_key "event_users", "users"
+  add_foreign_key "events", "users"
 end
