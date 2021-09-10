@@ -3,11 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.save
     sign_up(resource_name, resource) if resource.persisted?
-    if resource.errors.empty?
-      render json: { response: resource, status: 200 }
-    else
-      render json: { error: resource.errors, status: 400 }
-    end
+    render_jsonapi_response(resource)
   end
 
   private
