@@ -22,6 +22,7 @@ gem 'devise'
 gem 'devise-jwt', '~> 0.7.0'
 gem 'rack-cors'
 gem 'pry'
+gem 'dotenv-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
