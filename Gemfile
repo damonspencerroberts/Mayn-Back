@@ -19,7 +19,7 @@ gem 'cloudinary'
 gem 'ruby_identicon'
 
 # Use Active Storage variant
-# gem 'image_processig', '~> 1.2'
+# gem 'image_processing', '~> 1.2'
 gem 'devise'
 gem 'devise-jwt', '~> 0.7.0'
 gem 'rack-cors'
