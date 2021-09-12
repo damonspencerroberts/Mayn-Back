@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: %w[show]
     post '/update_user_age', to: 'users#update_age'
     post '/update_user_description', to: 'users#update_description'
+    post '/update_user_favorites', to: 'users#update_favorites'
   end
 
   devise_for :users,
