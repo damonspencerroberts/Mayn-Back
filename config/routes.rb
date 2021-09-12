@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post '/update_user_description', to: 'users#update_description'
     post '/update_user_favorites', to: 'users#update_favorites'
     post '/update_user_location', to: 'users#update_location'
+    post '/update_user_avatar', to: 'users#update_avatar'
   end
 
   devise_for :users,
