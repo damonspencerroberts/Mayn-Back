@@ -3,7 +3,7 @@ module UserService
     extend self
 
     def update_age(user, age_param)
-      user.update(age: age_param)
+      user.update(age: age_param.to_i)
     end
 
     def update_description(user, description_param)
