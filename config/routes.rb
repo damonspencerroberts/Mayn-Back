@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: %w[show]
+    post '/update_user_age', to: 'users#update_age'
+    post '/update_user_description', to: 'users#update_description'
   end
 
   devise_for :users,
