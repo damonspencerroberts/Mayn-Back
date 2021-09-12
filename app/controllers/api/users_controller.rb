@@ -51,6 +51,6 @@ class Api::UsersController < Api::BaseController
   end
 
   def favorites_params
-    params.require(:favorites).permit(:color, :destination, :fact, :alcohol, :socialise, :vacation_type, :movie)
+    params.permit(:color, :destination, :fact, :alcohol, :socialise, :vacation_type, :movie)
   end
 end
