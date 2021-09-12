@@ -16,14 +16,21 @@ class Api::UsersController < Api::BaseController
     UserService::Update.update_description(find_user, user_params[:description])
     render json: { status: 1, message: "Successfully updated #{find_user.username}'s description.", user: find_user }
   rescue StandardError => e
-    render json: { status: 0, message: 'Error updating age.', error: e }
+    render json: { status: 0, message: 'Error updating description.', error: e }
   end
 
   def update_favorites
     UserService::Update.update_favorites(find_user, favorites_params)
     render json: { status: 1, message: "Successfully updated #{find_user.username}'s favorites.", user: find_user }
   rescue StandardError => e
-    render json: { status: 0, message: 'Error updating age.', error: e }
+    render json: { status: 0, message: 'Error updating favorites.', error: e }
+  end
+
+  def update_location
+    UserService::Update.update_location(find_user, user_params[:location])
+    render json: { status: 1, message: "Successfully updated #{find_user.username}'s location.", user: find_user }
+  rescue StandardError => e
+    render json: { status: 0, message: 'Error updating location.', error: e }
   end
 
   private
@@ -33,11 +40,11 @@ class Api::UsersController < Api::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:age, :id, :description, :favorites)
+    params.permit(:age, :id, :description, :favorites, :location)
   end
 
   def favorites_params
-    params.require(:user).require(:favorites).permit(:color,
+    params.require(:favorites).permit(:color,
                                                      :destination,
                                                      :fact,
                                                      :alcohol,
