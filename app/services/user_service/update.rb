@@ -15,13 +15,8 @@ module UserService
       user.update(favorites: body)
     end
 
-    def update_location(user, location_param)
-      loc = Geocoder.search(location_param).first.data
-      lat = loc['lat']
-      lon = loc['lon']
-      place_id = loc['place_id']
-      display_name = loc['display_name']
-      body = UserService::Body.create_body_location(lat, lon, place_id, display_name)
+    def update_location(user, location_params)
+      body = UserService::Body.create_body_location(location_params)
       user.update(location: body)
     end
 

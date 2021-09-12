@@ -2,12 +2,13 @@ module UserService
   module Body
     extend self
 
-    def create_body_location(lat, lon, place_id, display_name)
+    def create_body_location(location_params)
       {
-        lat: lat,
-        lon: lon,
-        place_id: place_id,
-        display_name: display_name
+        lat: location_params[:lat],
+        lon: location_params[:lon],
+        city: location_params[:city],
+        country: location_params[:country],
+        country_code: location_params[:country_code]
       }
     end
 

@@ -27,7 +27,7 @@ class Api::UsersController < Api::BaseController
   end
 
   def update_location
-    UserService::Update.update_location(find_user, user_params[:location])
+    UserService::Update.update_location(find_user, location_params)
     render json: { status: 1, message: "Successfully updated #{find_user.username}'s location.", user: find_user }
   rescue StandardError => e
     render json: { status: 0, message: 'Error updating location.', error: e }
@@ -48,6 +48,10 @@ class Api::UsersController < Api::BaseController
 
   def user_params
     params.permit(:age, :id, :description, :favorites, :location, :avatar)
+  end
+
+  def location_params
+    params.permit(:id, :city, :country, :lat, :lon, :country_code)
   end
 
   def favorites_params
