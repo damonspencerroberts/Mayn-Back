@@ -20,8 +20,8 @@ class Api::UsersController < Api::BaseController
   end
 
   def update_favorites
-    body = UserService::Update.update_favorites(find_user, favorites_params)
-    render json: { status: 1, message: "Successfully updated #{find_user.username}'s favorites.", user: find_user, body: body }
+    UserService::Update.update_favorites(find_user, favorites_params)
+    render json: { status: 1, message: "Successfully updated #{find_user.username}'s favorites.", user: find_user }
   rescue StandardError => e
     render json: { status: 0, message: 'Error updating favorites.', error: e }
   end

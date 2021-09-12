@@ -13,7 +13,6 @@ module UserService
     def update_favorites(user, favorites_param)
       body = UserService::Body.create_body_favorites(favorites_param)
       user.update(favorites: body)
-      return body
     end
 
     def update_location(user, location_param)
