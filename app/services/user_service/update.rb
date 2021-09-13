@@ -23,5 +23,10 @@ module UserService
     def update_avatar(user, avatar_param)
       user.update(avatar: avatar_param)
     end
+
+    def update_name(user, first, last)
+      user.update(first_name: first)
+      user.update(last_name: last)
+    end
   end
 end
